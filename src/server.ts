@@ -1,6 +1,7 @@
 import "dotenv/config";
 import postgres from "postgres";
 import { App } from "uWebSockets.js";
+
 const app = App();
 const port = Number(process.env.PORT || 3000);
 
