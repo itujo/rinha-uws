@@ -11,8 +11,6 @@ services:
       - POSTGRES_DB=rinha
       - POSTGRES_HOST=db
       - NODE_ENV="production"
-      - WORKERS_ENABLED="true"
-      - WORKER_THREADS=2
     ports:
       - "3001:3000"
     depends_on:
