@@ -1,6 +1,7 @@
 # Rinha Backend - Solução para o Desafio de 2024/Q1
 
-Este repositório contém a solução para o desafio [Rinha de Backend - 2024/Q1](https://github.com/zanfranceschi/rinha-de-backend-2024-q1), focado em compartilhar conhecimento através de um desafio prático. A edição deste ano aborda o controle de concorrência com ênfase em operações de crédito e débito (crébitos), inspirado por discussões na comunidade de desenvolvimento.
+Este repositório contém a solução que visa ser o mais minimal e mais performática possível
+ para o desafio [Rinha de Backend - 2024/Q1](https://github.com/zanfranceschi/rinha-de-backend-2024-q1), focado em compartilhar conhecimento através de um desafio prático. A edição deste ano aborda o controle de concorrência com ênfase em operações de crédito e débito (crébitos), inspirado por discussões na comunidade de desenvolvimento.
 
 ## Sobre o Desafio
 

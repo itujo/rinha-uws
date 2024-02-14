@@ -78,8 +78,8 @@ app.get("/clientes/:id/extrato", async (res, req) => {
         `;
 
 		const saldoAtual = await sql`
-            SELECT SUM(valor) as total
-            FROM transacoes
+            SELECT valor as total
+            FROM saldos
             WHERE cliente_id = ${clienteId}
         `;
 
@@ -135,6 +135,7 @@ async function processTransaction(
 	if (
 		!valor ||
 		valor <= 0 ||
+		!Number.isInteger(valor) ||
 		!["c", "d"].includes(tipo) ||
 		descricao.length > 10 ||
 		descricao.length < 1
@@ -143,14 +144,15 @@ async function processTransaction(
 	}
 
 	const transactionResult = await sql.begin(async (sql: postgres.Sql) => {
-		const cliente = await sql`SELECT limite FROM clientes WHERE id = ${+id}`;
+		const cliente =
+			await sql`SELECT limite FROM clientes WHERE id = ${+id} FOR UPDATE`;
 
 		if (cliente.count === 0) throw new Error("404");
 
 		const { limite } = cliente[0];
 
 		const { saldo } = (
-			await sql`SELECT valor AS saldo FROM saldos WHERE cliente_id = ${+id}`
+			await sql`SELECT valor AS saldo FROM saldos WHERE cliente_id = ${+id} FOR UPDATE`
 		)[0];
 
 		const novoSaldo = saldo + (tipo === "c" ? valor : -valor);
