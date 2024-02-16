@@ -6,7 +6,7 @@ const app = App();
 const port = Number(process.env.PORT || 3000);
 
 const sql = postgres({
-	host: process.env.POSTGRES_HOST,
+	host: "/var/run/postgresql",
 	user: process.env.POSTGRES_USER,
 	pass: process.env.POSTGRES_PASSWORD,
 	db: process.env.POSTGRES_DB,
